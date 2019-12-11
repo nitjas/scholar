@@ -9,7 +9,7 @@
         <h1>Test Yourself</h1>
 		<p class="lead"><strong> Question. </strong> <%= question.text %> </p>
 		<br><br>
-        <form method="POST" action='/answer'>
+        <form method="POST" action='/check'>
 			<% if (options.length) { %>
 				<% options.forEach(function(option){ %>
 					<input type="radio" name="options" value="<%= option[0] %>"> <%= option[1] %> <br>

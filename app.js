@@ -34,16 +34,38 @@ app.get("/", function(req, res) {
 	options = [];
 	var a = 'select id, text from options where questionId = ?';
 	con.query(a, question.id, function (error, results, fields) {
-		if (error) throw error;
 		con.end();
+		if (error) throw error;
 		for (var i = 0; i < results.length; ++i) {
 			options.push([
 				results[i].id,
 				results[i].text
 			]);
 		}
-		console.log(options);
 		res.render("home", {question: question, options: options});
+	});
+});
+
+app.post('/check', function(req,res){
+	var choice = req.body.options;
+	
+	var con = mysql.createConnection({
+	        host    :       'localhost',
+	        user    :       'nitjas',
+	        password:       'nitin',
+	        database:       'scholar'
+	});
+	
+	var q = 'select isAnswer from options where id = ?';
+	con.query(q, choice, function (error, result, fields) {
+		con.end();
+		if (error) throw error;
+		if(result[0].isAnswer) {
+			console.log('Right!');
+		} else {
+			console.log('Wrong!');
+		}
+		res.redirect("/");
 	});
 });
 
