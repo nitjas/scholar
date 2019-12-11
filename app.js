@@ -22,7 +22,7 @@ app.get("/", function(req, res) {
 	// Get the question & level
 	var q = 'select text, level from questions where id = ?';
 	question = {
-		id: 1 // Math.floor(Math.random() * 10) + 1
+		id: 1 // Math.floor(Math.random() * 10) + 1 // 1 .. 10
 	};
 	con.query(q, question.id, function (error, results, fields) {
 		if (error) throw error;
@@ -42,6 +42,7 @@ app.get("/", function(req, res) {
 				results[i].text
 			]);
 		}
+		console.log(options);
 		res.render("home", {question: question, options: options});
 	});
 });

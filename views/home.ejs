@@ -7,27 +7,15 @@
 <div class="flex-container">
     <div class="container">
         <h1>Test Yourself</h1>
-        <p class="lead"><strong> Question. </strong> <%= question.text %> </p>
+		<p class="lead"><strong> Question. </strong> <%= question.text %> </p>
+		<br><br>
         <form method="POST" action='/answer'>
-            
-			<label class="container"><%= options[0] %>
-			  <input type="radio" name="radio">
-			  <span class="checkmark"></span>
-			</label>
-			<label class="container"><%= options[1] %>
-			  <input type="radio" name="radio">
-			  <span class="checkmark"></span>
-			</label>
-			<label class="container"><%= options[2] %>
-			  <input type="radio" name="radio">
-			  <span class="checkmark"></span>
-			</label>
-			<label class="container"><%= options[3] %>
-			  <input type="radio" name="radio">
-			  <span class="checkmark"></span>
-			</label>
-			
-            <p><button>Submit</button></p>
+			<% if (options.length) { %>
+				<% options.forEach(function(option){ %>
+					<input type="radio" name="options" value="<%= option[0] %>"> <%= option[1] %> <br>
+				<% }) %>
+			<% } %>
+			<p><button>Submit</button></p>
         </form>
 		<p> Level: <strong><%= question.level %></strong></p>
     </div>
