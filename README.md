@@ -1,6 +1,7 @@
-#Q & A app to help prepare for CS interviews..
+# Q & A app to help prepare for CS interviews..
 
-##Get started with the install
+## Get started with the install
+<pre>
 install nodejs LTS from https://nodejs.org/en/download/
 clone this repo and inside the top level scholar folder do a..
 $ npm install
@@ -15,3 +16,4 @@ entry point: app.js
 .. for others hit enter
 $ npm init
 $ npm install express mysql ejs faker body-parser --save
+</pre>
